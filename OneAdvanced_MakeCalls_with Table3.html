@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>oneAdvanced</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        align-items: center;
+      }
+
+      header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 16px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      header img {
+        height: 40px;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        width: 100%;
+        max-width: 900px;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 900px;
+        border: 1px solid #ccc;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px 14px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f8f8f8;
+        font-weight: bold;
+      }
+
+      tr:hover {
+        background-color: #f4f4f4;
+      }
+
+      .button-container {
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #0070f3;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .button:hover {
+        background-color: #005fcc;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="https://www.oneadvanced.com/_next/static/media/oneadvanced-logo.2c9f7db1.svg"
+        alt="Logo"
+      />
+    </header>
+
+    <main>
+      <h1>Dial Records</h1>
+
+      <table id="airtable-table">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+
+      <div class="button-container">
+        <a
+          href="https://home-b32.nice-incontact.com/inContact/Manage/Scripts/Spawn.aspx?scriptName=Olivier_ATTIA\DEMO\251013\OAT_PatientsManagement_scheduler&bus_no=4597359&scriptId=313753000&skill_no=4134442&p1=&p2=&p3=&p4=&p5=&Guid=2f080976-b3a3-48d6-8346-862727f0cdeb"
+          target="_blank"
+          class="button"
+          >Make Calls</a
+        >
+      </div>
+    </main>
+
+    <script>
+      const AIRTABLE_BASE_ID = "appjdlFvptrsB2NKS";
+      const AIRTABLE_TABLE_NAME = "tblXLtOFVqCgG9vG0";
+      const AIRTABLE_VIEW_NAME = "Grid view"; // 👈 Replace this
+      const AIRTABLE_API_KEY = "patB4ZskAv8k270lJ.34eaf5550e97e226f5348b4ac3683f7806a67cc39f24eeb5241874812cdefc8f"; // 👈 Replace this
+
+      async function fetchAirtableData() {
+        try {
+          const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?view=${encodeURIComponent(AIRTABLE_VIEW_NAME)}`;
+          const response = await fetch(url, {
+            headers: {
+              Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+            },
+          });
+          const data = await response.json();
+
+          if (!data.records || data.records.length === 0) {
+            document.getElementById("table-body").innerHTML =
+              "<tr><td colspan='100%'>No records found</td></tr>";
+            return;
+          }
+
+          const firstRecord = data.records[0];
+          const headers = Object.keys(firstRecord.fields);
+
+          // Create table header
+          const thead = document.getElementById("table-head");
+          thead.innerHTML =
+            "<tr>" +
+            headers.map((h) => `<th>${h}</th>`).join("") +
+            "</tr>";
+
+          // Create table body
+          const tbody = document.getElementById("table-body");
+          tbody.innerHTML = data.records
+            .map((record) => {
+              return (
+                "<tr>" +
+                headers
+                  .map((h) => `<td>${record.fields[h] ?? ""}</td>`)
+                  .join("") +
+                "</tr>"
+              );
+            })
+            .join("");
+        } catch (error) {
+          console.error("Error fetching Airtable data:", error);
+        }
+      }
+
+      fetchAirtableData();
+    </script>
+  </body>
+</html>
