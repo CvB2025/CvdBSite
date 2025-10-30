@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Demo Controls</title>
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      background-image: url('https://images.ctfassets.net/40w0m41bmydz/6y5vRpCj9feXQjCZVyzRRn/c521fa9b849041e65d1d670e94a01643/CDT-1375_Blog_Image_Hero.jpg?w=1980&h=834&fl=progressive&q=50&fm=jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      width: 100%;
+      max-width: 900px;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    button {
+      background: linear-gradient(145deg, #e6e6e6, #bfbfbf);
+      color: #000;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #999, 0 6px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.15s ease;
+      width: 100%;
+    }
+
+    .action-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 1px solid #888;
+      background: #f5f5f5;
+    }
+
+   .btn-table th {
+      font-size: 28px;      /* updated font size */
+      font-weight: 600;
+      padding-bottom: 12px;
+    }
+ 
+
+    button:hover {
+      background: linear-gradient(145deg, #f0f0f0, #cfcfcf);
+      transform: translateY(-3px);
+      box-shadow: 0 9px 0 #888, 0 9px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #666, 0 2px 5px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(145deg, #c9c9c9, #a9a9a9);
+    }
+
+    /* Floating logo styling */
+    .logo {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      width: 100px;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .logo:hover {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+
+      .logo {
+        width: 70px;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+	    .btn-table {
+      border-collapse: collapse; /* remove inner gaps */
+      border-spacing: 0;
+      width: 400px;              /* adjust as needed */
+      margin: 20px auto;
+    }
+    .btn-table td {
+      border: none;             /* no visible cell borders */
+      padding: 8px;
+      vertical-align: middle;
+      width: 50%;               /* two columns */
+    }
+
+   .spacer-row td {
+      padding: 0;
+      height: 20px; /* adjust spacing between rows */
+    }
+
+    /* Make buttons full-width of cell and pleasant-looking */
+    .action-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 1px solid #888;
+      background: #f5f5f5;
+    }
+    .action-btn:active { transform: translateY(1px); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Debt Data Controls</h1>
+  </header>
+
+  <form method="post" action="/default-target">
+  <table class="btn-table" role="presentation" aria-label="Action buttons">
+  <thead>
+      <tr>
+        <th>N/A</th>
+        <th>Reset</th>
+      </tr>
+    </thead>
+    <tr>
+      <td><button type="submit" class="button" formaction="">N/A</button></td>
+      <td><button type="submit" class="button" formaction="https://home-b32.nice-incontact.com/inContact/Manage/Scripts/Spawn.aspx?scriptName=CharlVanDenBerg\Dev\HMRC\ResetScripts\RESET_PAYE_LARGE_DEBT&bus_no=4597359&scriptId=314087067&skill_no=35657207&p1=&p2=&p3=&p4=&p5=&Guid=2f080976-b3a3-48d6-8346-862727f0cdeb">PAYE_LARGE_DEBT</button></td>
+    </tr>
+	<tr class="spacer-row"><td colspan="2"></td></tr>
+	<tr>
+      <td><button type="submit" class="button" formaction="">N/A</button></td>
+      <td><button type="submit" class="button" formaction="https://home-b32.nice-incontact.com/inContact/Manage/Scripts/Spawn.aspx?scriptName=CharlVanDenBerg\Dev\HMRC\ResetScripts\RESET_PAYE_SMALL_DEBT&bus_no=4597359&scriptId=314087065&skill_no=35657167&p1=&p2=&p3=&p4=&p5=&Guid=2f080976-b3a3-48d6-8346-862727f0cdeb">PAYE_SMALL_DEBT</button></td>
+    </tr>
+	<tr class="spacer-row"><td colspan="2"></td></tr>
+    <tr>
+      <td><button type="submit" class="button" formaction="">N/A</button></td>
+      <td><button type="submit" class="button" formaction="https://home-b32.nice-incontact.com/inContact/Manage/Scripts/Spawn.aspx?scriptName=CharlVanDenBerg\Dev\HMRC\ResetScripts\RESET_SA_LARGE_DEBT&bus_no=4597359&scriptId=314087064&skill_no=35657208&p1=&p2=&p3=&p4=&p5=&Guid=2f080976-b3a3-48d6-8346-862727f0cdeb">SA_LARGE_DEBT</button></td>
+    </tr>
+	<tr class="spacer-row"><td colspan="2"></td></tr>
+    <tr>
+      <td><button type="submit" class="button" formaction="">N/A</button></td>
+      <td><button type="submit" class="button" formaction="https://home-b32.nice-incontact.com/inContact/Manage/Scripts/Spawn.aspx?scriptName=CharlVanDenBerg\Dev\HMRC\ResetScripts\RESET_SA_SMALL_DEBT&bus_no=4597359&scriptId=314087066&skill_no=35657206&p1=&p2=&p3=&p4=&p5=&Guid=2f080976-b3a3-48d6-8346-862727f0cdeb">SA_SMALL_DEBT</button></td>
+    </tr>
+  </table>
+  </form>
+
+
+
+  <!-- Fixed logo at bottom right -->
+  <img 
+    src="https://resources.nice.com/wp-content/uploads/2025/08/NiCE-logo.jpg" 
+    alt="NiCE Logo" 
+    class="logo"
+  />
+</body>
+</html>
+
+
+
+
+
